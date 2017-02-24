@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAPS</title>
+    <link rel="stylesheet" href="dist/css/libraries.css">
+    <link rel="stylesheet" href="dist/css/index.min.css">
+</head>
+<body>
+<!--<div id="visibleMap" style="width: 800px; height: 800px; border: 2px solid darkred"></div>-->
+<div class="main-container"><!--
+    --><div class="container-maps-and-content"><!--
+        --><div id="containerMaps"><!--
+            --><div id="googleMaps"></div><!--
+            --><div id="yandexMaps"></div><!--
+            --><div id="leafletMaps"></div><!--
+            --><div id="containerOwnControls"><!--
+                --><div class="container-history-controls"><!--
+                    --><div class="container-history-controls-title">History</div><!--
+                    --><div class="container-history-controls-container-btn"><!--
+                        --><div id="container-history-controls-container-btn_undo">&nbsp;</div><!--
+                        --><div id="container-history-controls-container-btn_redo">&nbsp;</div><!--
+                    --></div><!--
+                --></div><!--
+                --><div class="container-toggle-maps"><!--
+                    --><div class="container-toggle-maps-title">Maps</div><!--
+                    --><div class="container-toggle-maps-buttons"><!--
+                        --><div id="buttonGoogle" class="medium-expand large-expand">&nbsp;</div><!--
+                        --><div id="buttonYandex" class="medium-expand large-expand">&nbsp;</div><!--
+                        --><div id="buttonLeaflet" class="medium-expand large-expand">&nbsp;</div><!--
+                    --></div><!--
+                --></div><!--
+            --></div>
+        </div>
+        <div id="containerContent">
+            <div id="containerIcoOpenSlider">
+                <div id="icoOpenSlider">&nbsp;</div>
+            </div>
+            <div id="rightMenu">
+                <div class="right-menu-text"><p>You can open this site in two browser tabs and they will be synchronized!</p>
+                    <p>Contact: <a href="mailto:artamonovdev@gmail.com">artamonovdev@gmail.com</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATBReljV1V9o1KDQonkim7I3E0n59dmq4&libraries=places&language=en"></script>
+<script src="https://api-maps.yandex.ru/2.1/?lang=en-US"></script>
+<script src="dist/js/libraries.js"></script>
+<script src="https://www.mapquestapi.com/sdk/leaflet/v2.s/mq-map.js?key=DBfYK8HhawwpjvQ6DRYliJ7HMPf25BJR"></script>
+<script src="https://www.mapquestapi.com/sdk/leaflet/v2.s/mq-traffic.js?key=DBfYK8HhawwpjvQ6DRYliJ7HMPf25BJR"></script>
+<script src="src/js/ui-logic.js"></script>
+<script src="src/js/index.js"></script>
+</html>
