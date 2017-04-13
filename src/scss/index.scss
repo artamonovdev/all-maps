@@ -3,7 +3,6 @@ html, body {
   padding: 0;
   height: 100%;
   width: 100%;
-  background-color: whitesmoke;
   line-height: 1.5;
 }
 
@@ -85,6 +84,7 @@ html body {
   }
 }
 
+/*
 .main-container {
   //margin: 10px;
   height: 100%;
@@ -232,12 +232,12 @@ html body {
         cursor: col-resize;
         flex-direction: column;
         justify-content: center;
-        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#91bfe5+0,f5f5f5+100 */
-        background: rgb(145,191,229); /* Old browsers */
-        background: -moz-linear-gradient(left,  rgba(145,191,229,1) 0%, rgba(245,245,245,1) 100%); /* FF3.6-15 */
-        background: -webkit-linear-gradient(left,  rgba(145,191,229,1) 0%,rgba(245,245,245,1) 100%); /* Chrome10-25,Safari5.1-6 */
-        background: linear-gradient(to right,  rgba(145,191,229,1) 0%,rgba(245,245,245,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#91bfe5', endColorstr='#f5f5f5',GradientType=1 ); /* IE6-9 */
+        !* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#91bfe5+0,f5f5f5+100 *!
+        background: rgb(145,191,229); !* Old browsers *!
+        background: -moz-linear-gradient(left,  rgba(145,191,229,1) 0%, rgba(245,245,245,1) 100%); !* FF3.6-15 *!
+        background: -webkit-linear-gradient(left,  rgba(145,191,229,1) 0%,rgba(245,245,245,1) 100%); !* Chrome10-25,Safari5.1-6 *!
+        background: linear-gradient(to right,  rgba(145,191,229,1) 0%,rgba(245,245,245,1) 100%); !* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ *!
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#91bfe5', endColorstr='#f5f5f5',GradientType=1 ); !* IE6-9 *!
 
         &:hover {
           background-color: #bcbcbc;
@@ -259,6 +259,306 @@ html body {
         overflow: auto;
         .right-menu-text {
           padding: 10px;
+        }
+      }
+    }
+  }
+}*/
+
+.main-container {
+  //margin: 10px;
+  height: 100%;
+  .full-width {
+    display: block;
+    width: 100%;
+  }
+  .wrapper-with-padding {
+    padding: 20px;
+  }
+  .paragraph-with-padding {
+    padding: 15px 0;
+    margin: 5px 0;
+  }
+  .hover-pointer {
+    cursor: pointer;
+  }
+  .weight-text {
+    font-weight: bold;
+  }
+
+  .container-maps-and-content {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    #containerMaps {
+      position: relative;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      padding: 0;
+
+      #containerOwnControls {
+        height: 43px;
+        width: 186px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background-color: white;
+        z-index: 2147483647;
+        border-top: 1px solid #cacaca;
+
+        %one-group {
+          height: 100%;
+          float: left;
+          display: inline-block;
+          border-right: 1px solid #cacaca;
+        }
+
+        %wrapper-buttons {
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+          height: 60%;
+        }
+
+        %button {
+          height: 100%;
+          display: inline-block;
+          float: left;
+          cursor: pointer;
+          background-repeat: no-repeat;
+          background-position: center;
+          &:hover {
+            background-color: #ebebeb;
+          }
+        }
+
+        .group-header {
+          height: 40%;
+          padding: 0 3px;
+          font-size: 12px;
+          text-align: center;
+          border-bottom: 1px solid #cacaca;
+        }
+
+        .container-gps-control {
+          @extend %one-group;
+          width: 18%;
+          &__wrapper-buttons {
+            @extend %wrapper-buttons;
+            #btnDetectorGps {
+              @extend %button;
+              width: 100%;
+              background-image: url("/img/icon_gps_detect.svg");
+              background-size: 62%;
+            }
+          }
+        }
+        .container-history-controls {
+          @extend %one-group;
+          width: 34%;
+          &__wrapper-buttons {
+            @extend %wrapper-buttons;
+            #container-history-controls-container-btn_undo {
+              @extend %button;
+              width: 50%;
+              border-right: 1px solid #cacaca;
+              background-image: url("/img/arrow_undo.png");
+              background-size: 80%;
+            }
+            #container-history-controls-container-btn_redo {
+              @extend %button;
+              width: 50%;
+              background-image: url("/img/arrow_redo.png");
+              background-size: 80%;
+            }
+            .disable-btn-history {
+              background-color: #cacaca;
+            }
+          }
+        }
+        .container-toggle-maps {
+          @extend %one-group;
+          width: 48%;
+          &__wrapper-buttons {
+            @extend %wrapper-buttons;
+            #buttonGoogle {
+              @extend %button;
+              width: 33.33%;
+              background-size: auto 80%;
+              background-image: url("/img/google-logo_26_hover.png");
+              border-right: 1px solid #cacaca;
+            }
+            #buttonYandex {
+              @extend %button;
+              width: 33.33%;
+              background-size: auto 80%;
+              background-image: url("/img/yadenx-logo_26_hover.png");
+              border-right: 1px solid #cacaca;
+            }
+            #buttonLeaflet {
+              @extend %button;
+              width: 33.33%;
+              background-size: auto 80%;
+              background-image: url("/img/leaflet-logo_26_hover.png");
+            }
+          }
+        }
+      }
+      #googleMaps, #yandexMaps, #leafletMaps {
+        height: 100%;
+        width: 100%;
+      }
+    }
+    #containerContent {
+      height: 100%;
+      display: flex;
+      flex-direction: row;
+      #containerIcoOpenSlider {
+        display: flex;
+        height: 100%;
+        cursor: col-resize;
+        flex-direction: column;
+        justify-content: center;
+        border-right: 1px solid #9e9e9e;
+        border-left: 1px solid #9e9e9e;
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#91bfe5+0,f5f5f5+100 */
+        //background: rgb(145,191,229); /* Old browsers */
+        //background: -moz-linear-gradient(left,  rgba(145,191,229,1) 0%, rgba(245,245,245,1) 100%); /* FF3.6-15 */
+        //background: -webkit-linear-gradient(left,  rgba(145,191,229,1) 0%,rgba(245,245,245,1) 100%); /* Chrome10-25,Safari5.1-6 */
+        //background: linear-gradient(to right,  rgba(145,191,229,1) 0%,rgba(245,245,245,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        //filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#91bfe5', endColorstr='#f5f5f5',GradientType=1 ); /* IE6-9 */
+
+        //&:hover {
+        //  background-color: #bcbcbc;
+        //}
+        #icoOpenSlider {
+          width: 30px;
+          height: 90px;
+          background-image: url("/img/menu-arrow_min.png");
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: 60%;
+          cursor: pointer;
+        }
+      }
+      #rightMenu {
+        display: block;
+        height: 100%;
+        width: 600px;
+        overflow: auto;
+
+        %padding-general-block {
+          padding: 0 10px;
+        }
+
+        .btn-add-data {
+          display: block;
+          width: 100%;
+        }
+        .wrapper-datetimepicker {
+          position: relative;
+        }
+        .panel-heading {
+          cursor: pointer;
+        }
+        .hint-text {
+          font-size: 0.8em;
+          color: red;
+        }
+        .alert-error-listener {
+          display: none;
+        }
+        .alert-success-listener {
+          display: none;
+        }
+
+        .wrapper-greeting {
+          @extend %padding-general-block;
+        }
+        .wrapper-menu {
+          @extend %padding-general-block;
+          list-style: none;
+        }
+        .wrapper-schedule {
+          @extend %padding-general-block;
+          .wrapper-task-list-by-day {
+            .one-day-listener {
+              .wrapper-task-list-listener {
+                padding: 10px 40px 20px 40px;
+                .sorted-task-list-listener {
+                  padding: 0;
+                  .task-row-listener {
+                    position: relative;
+                    border-bottom: 1px solid grey;
+                    padding: 6px 0;
+                    .task-name-listener {
+                      display: inline-block;
+                    }
+                    .wrapper-task-icons {
+                      display: inline-block;
+                      position: absolute;
+                      right: 20px;
+                      .icon-edit-task {
+                        color: green;
+                        cursor: pointer;
+                      }
+                      .icon-remove-task {
+                        color: red;
+                        cursor: pointer;
+                      }
+                    }
+                  }
+                  .form-update-create-task {
+                    margin: 15px 0 0 0;
+                  }
+                }
+              }
+            }
+          }
+        }
+        .wrapper-new-task {
+          @extend %padding-general-block;
+          .wrapper-select-place {
+            margin: 15px 0 10px 0;
+            .wrapper-place-information-for-editing-listener {
+              margin: 10px 0 0 0;
+            }
+          }
+          .around-clock-time-work {
+            padding: 6px 0;
+          }
+        }
+        .wrapper-new-place {
+          @extend %padding-general-block;
+          margin: 5px 0;
+
+        }
+        .wrapper-settings {
+          @extend %padding-general-block;
+        }
+
+        .wrapper-schedule, .wrapper-new-task, .wrapper-new-place {
+          .wrapper-around-clock-time-work {
+            padding: 6px 0 6px 0;
+            .label-around-clock-time-work {
+              margin: 0;
+            }
+          }
+          .form-add-place {
+            margin: 0 0 30px 0;
+          }
+          .btn-add-new-time-range {
+            display: block;
+          }
+          .wrapper-added-places {
+            border-top: 1px solid darkred;
+            padding: 30px 0 0 0;
+            .wrapper-place-information-for-editing-listener {
+              margin: 10px 0 0 0;
+            }
+          }
         }
       }
     }

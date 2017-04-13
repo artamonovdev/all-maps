@@ -3,6 +3,7 @@
  */
 
 $(document).ready(function () {
+    L.Icon.Default.imagePath = '/img/leaflet-images';
     $('#container-own-controls').bind('blur change dblclick error focus focusin focusout keydown keypress keyup load mousedown mouseenter mouseleave mousemove mouseout mouseover mouseup resize scroll select submit', function (event) {
         event.stopPropagation();
     });
@@ -1337,6 +1338,130 @@ $(document).ready(function () {
         return interfaceObj;
     })();
 
+    // add function with API of all maps
+    var objHandlePointer = (function () {
+
+        var titleGpsMarker = 'You are here!';
+
+        function addPointerToGoogleMaps(latLng, options) {
+            var marker = new google.maps.Marker({
+                position: new google.maps.LatLng(latLng.lat, latLng.lng),
+                title: options.title,
+                map: googleMaps
+            });
+
+            return marker;
+        }
+
+        function addPointerToYandexMaps(latLng, options) {
+            var marker = new ymaps.Placemark([latLng.lat, latLng.lng]);
+            marker.description = options.title;
+            yandexMaps.geoObjects.add(marker);
+
+            return marker;
+        }
+
+        function addPointerToLeafletMaps(latLng, options) {
+            var marker = new L.Marker(L.latLng(latLng.lat, latLng.lng), {
+                title: options.title
+            });
+            leafletMaps.addLayer(marker);
+
+            return marker;
+        }
+
+        var objInterface = {
+
+            addTemporaryPointerToAllMapsForGps: function (latLng) {
+                var optionForGps = {
+                    title: titleGpsMarker
+                };
+                var temporaryMarkerGoogleMaps = addPointerToGoogleMaps(latLng, optionForGps);
+                var temporaryMarkerYandexMaps = addPointerToYandexMaps(latLng, optionForGps);
+                var temporaryMarkerLeafletMaps = addPointerToLeafletMaps(latLng, optionForGps);
+
+                window.setTimeout(function () {
+                    temporaryMarkerGoogleMaps.setMap(null);
+                    yandexMaps.geoObjects.remove(temporaryMarkerYandexMaps);
+                    leafletMaps.removeLayer(temporaryMarkerLeafletMaps);
+                }, 20000);
+            }
+        };
+
+        return objInterface;
+
+    })();
+
+    var objInitGps = (function () {
+        var zoomForGpsCoordinate = 16;
+        var interfaceObj = {
+            addListenerGps: function () {
+                var btnGps = $('#btnDetectorGps');
+                btnGps.click(function () {
+                    //    to run a search process
+                    console.log('Run a search GPS');
+
+                    function successCallbackPosition(position) {
+                        console.log('Your position: ' + position);
+                        var latLng = {
+                            lat: position.coords.latitude,
+                            lng: position.coords.longitude
+                        };
+                        objChangeMapsBounds.onceChangePositionOfCurrentMap(latLng, zoomForGpsCoordinate);
+
+                        //    add temporary a pointer to all maps
+                        //    todo add temporary a pointer to all maps
+                        objHandlePointer.addTemporaryPointerToAllMapsForGps(latLng);
+
+                    }
+
+                    function errorCallbackHighAccuracy(error) {
+                        switch (error.code) {
+                            case error.TIMEOUT:
+                                window.navigator.geolocation.getCurrentPosition(successCallbackPosition, errorCallbackLowAccuracy, {
+                                    maximumAge: 600000,
+                                    timeout: 5000,
+                                    enableHighAccuracy: false
+                                });
+                                break;
+                            case error.PERMISSION_DENIED:
+                                window.alert('You have forbidden to determine location!');
+                                break;
+                            case error.POSITION_UNAVAILABLE:
+                                window.alert('It is impossible to determine your position! High Accuracy.');
+                                break;
+                        }
+                    }
+
+                    function errorCallbackLowAccuracy(error) {
+                        switch (error.code) {
+                            case error.TIMEOUT:
+                                // window.alert('It is impossible to determine your position! Time out!');
+                                break;
+                            case error.PERMISSION_DENIED:
+                                window.alert('You have forbidden to determine location!');
+                                break;
+                            case error.POSITION_UNAVAILABLE:
+                                window.alert('It is impossible to determine your position! Low Accuracy.');
+                                break;
+                        }
+                    }
+
+                    if ('geolocation' in window.navigator) {
+                        window.navigator.geolocation.getCurrentPosition(successCallbackPosition, errorCallbackHighAccuracy, {
+                            maximumAge: 600000,
+                            timeout: 5000,
+                            enableHighAccuracy: true
+                        });
+                    } else {
+                        window.alert('Your browser do not support geolocation!');
+                    }
+                });
+            }
+        };
+        return interfaceObj;
+    })();
+
     function initApp() {
         //    init google maps
         objInitMaps.initGoogleMaps();
@@ -1352,7 +1477,8 @@ $(document).ready(function () {
         objUtilHistory.addEventListenerToSessionHistoryAndRestoreHistory();
         //    change url
         objFormationHashUrl.updateUrlWithCurrentState();
-
+        //    add listener to gps button
+        objInitGps.addListenerGps();
     }
 
     ymaps.ready(initApp);

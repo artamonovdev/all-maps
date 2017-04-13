@@ -9,34 +9,59 @@
     <link rel="stylesheet" href="dist/css/index.min.css">
 </head>
 <body>
-<!--<div id="visibleMap" style="width: 800px; height: 800px; border: 2px solid darkred"></div>-->
-<div class="main-container"><!--
-    --><div class="container-maps-and-content"><!--
-        --><div id="containerMaps"><!--
-            --><div id="googleMaps"></div><!--
-            --><div id="yandexMaps"></div><!--
-            --><div id="leafletMaps"></div><!--
-            --><div id="containerOwnControls"><!--
-                --><div class="container-history-controls"><!--
-                    --><div class="container-history-controls-title">History</div><!--
-                    --><div class="container-history-controls-container-btn"><!--
-                        --><div id="container-history-controls-container-btn_undo">&nbsp;</div><!--
-                        --><div id="container-history-controls-container-btn_redo">&nbsp;</div><!--
-                    --></div><!--
-                --></div><!--
-                --><div class="container-toggle-maps"><!--
-                    --><div class="container-toggle-maps-title">Maps</div><!--
-                    --><div class="container-toggle-maps-buttons"><!--
-                        --><div id="buttonGoogle" class="medium-expand large-expand">&nbsp;</div><!--
-                        --><div id="buttonYandex" class="medium-expand large-expand">&nbsp;</div><!--
-                        --><div id="buttonLeaflet" class="medium-expand large-expand">&nbsp;</div><!--
-                    --></div><!--
-                --></div><!--
-            --></div>
-        </div>
+<div class="main-container">
+    <div class="container-maps-and-content"><!--
+    -->
+        <div id="containerMaps"><!--
+      -->
+            <div id="googleMaps"></div><!--
+      -->
+            <div id="yandexMaps"></div><!--
+      -->
+            <div id="leafletMaps"></div><!--
+      -->
+            <div id="containerOwnControls"><!--
+        -->
+                <div class="container-gps-control"><!--
+          -->
+                    <div class="group-header">GPS</div><!--
+          -->
+                    <div class="container-gps-control__wrapper-buttons"><!--
+            -->
+                        <div id="btnDetectorGps">&nbsp;</div>
+                    </div>
+                </div><!--
+        -->
+                <div class="container-history-controls"><!--
+          -->
+                    <div class="group-header">History</div><!--
+          -->
+                    <div class="container-history-controls__wrapper-buttons"><!--
+            -->
+                        <div id="container-history-controls-container-btn_undo">&nbsp;</div><!--
+            -->
+                        <div id="container-history-controls-container-btn_redo">&nbsp;</div><!--
+          --></div><!--
+        --></div><!--
+        -->
+                <div class="container-toggle-maps"><!--
+          -->
+                    <div class="group-header">Maps</div><!--
+          -->
+                    <div class="container-toggle-maps__wrapper-buttons"><!--
+            -->
+                        <div id="buttonGoogle" class="medium-expand large-expand">&nbsp;</div><!--
+            -->
+                        <div id="buttonYandex" class="medium-expand large-expand">&nbsp;</div><!--
+            -->
+                        <div id="buttonLeaflet" class="medium-expand large-expand">&nbsp;</div><!--
+          --></div><!--
+        --></div><!--
+      --></div><!--
+    --></div>
         <div id="containerContent">
             <div id="containerIcoOpenSlider">
-                <div id="icoOpenSlider">&nbsp;</div>
+                <div id="icoOpenSlider" style="transform: rotateY(180deg);">&nbsp;</div>
             </div>
             <div id="rightMenu">
                 <div class="right-menu-text"><p>You can open this site in two browser tabs and they will be synchronized!</p>
