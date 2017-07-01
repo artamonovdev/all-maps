@@ -6,3 +6,6 @@ OSM and others
 
 Example:
 https://all-maps.herokuapp.com/
+
+Example of usage:
+http://carries.herokuapp.com/
