@@ -8,4 +8,4 @@ Example:
 https://all-maps.herokuapp.com/
 
 Example of usage:
-http://carries.herokuapp.com/
+https://carries.herokuapp.com/
